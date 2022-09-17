@@ -1,0 +1,42 @@
+package org.example;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class LoginPage {
+
+    public WebDriver driver;
+    public LoginPage(WebDriver driver) {
+        PageFactory.initElements(driver, this);
+        this.driver = driver;
+    }
+
+    //@FindBy(xpath = "//*[@id="passp-field-login"]")
+    @FindBy(xpath = "//*[contains(@id, 'passp-field-login')]")
+    private WebElement loginField;
+
+    @FindBy(xpath = "//*[contains(text(), 'Войти')]") //кнопка "войти"
+    private WebElement loginBtn;
+    //*[@id="passp:sign-in"]
+
+    @FindBy(xpath = "//*[contains(@id, 'passp-field-passwd')]") //Поле ввода пароля.
+    private WebElement passwdField;
+
+    public void inputLogin(String login) {
+        loginField.sendKeys(login);
+    }
+
+    public void inputPasswd(String passwd) {
+        passwdField.sendKeys(passwd);
+    }
+
+    public void clickLoginBtn() {
+        loginBtn.click();
+    }
+
+
+
+
+}
